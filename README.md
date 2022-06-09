@@ -1,0 +1,1 @@
+# 2022_ai_online_competition-sementic_segmentation
