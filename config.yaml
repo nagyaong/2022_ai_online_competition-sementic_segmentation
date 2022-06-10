@@ -1,0 +1,36 @@
+pretrained_model_name: nvidia/segformer-b0-finetuned-ade-512-512
+
+images_with_mask:
+  image_directory: /Users/mskim/Downloads/seg_harbor/data/train/labeled_images
+  mask_directory: /Users/mskim/Downloads/seg_harbor/data/train/labels
+  image_extension: jpg
+  mask_extension: png
+
+images_without_mask:
+  directory: /Users/mskim/Downloads/seg_harbor/data/train/unlabeled_images
+  extension: jpg
+
+test_image_directory: /Users/mskim/Downloads/seg_harbor/data/test/images
+submission_frame_path: /Users/mskim/Downloads/seg_harbor/sample_submission.csv
+
+num_labels: 4
+
+label2id:
+  container_truck: 0
+  forklift: 1
+  reach_stacker: 2
+  ship: 3
+
+train:
+  classifier:
+    validation_fraction: 0.2
+    batch_size: 32
+    num_epochs: 10
+    learning_rate: 6e-5
+    weight_decay: 1e-2
+
+  segmenter:
+    batch_size: 4
+    num_epochs: 10
+    learning_rate: 6e-5
+    weight_decay: 1e-2
