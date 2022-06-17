@@ -1,17 +1,21 @@
-pretrained_model_name: nvidia/segformer-b0-finetuned-ade-512-512
+pretrained_model_name: facebook/maskformer-swin-base-ade
 
 images_with_mask:
-  image_directory: /Users/mskim/Downloads/seg_harbor/data/train/labeled_images
-  mask_directory: /Users/mskim/Downloads/seg_harbor/data/train/labels
+  image_directory: ../data/final_data/train/labeled_images
+  mask_directory: ../data/final_data/train/labels
   image_extension: jpg
   mask_extension: png
 
 images_without_mask:
-  directory: /Users/mskim/Downloads/seg_harbor/data/train/unlabeled_images
+  directory: ../data/final_data/train/unlabeled_images
   extension: jpg
 
-test_image_directory: /Users/mskim/Downloads/seg_harbor/data/test/images
-submission_frame_path: /Users/mskim/Downloads/seg_harbor/sample_submission.csv
+test_image_directory: ../data/final_data/train/unlabeled_images
+# test_image_directory: ../data/final_data/test/images
+
+# submission_frame_path: ../data/final_data/sample_submission.csv
+submission_frame_path: ../data/final_data/train/unlabeled_images/list.csv
+
 
 num_labels: 4
 

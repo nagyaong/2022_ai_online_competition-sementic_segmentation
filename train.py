@@ -8,7 +8,9 @@ from torch import optim
 from torch.nn import functional
 from torch.utils.data import DataLoader
 
-from transformers import AutoModelForSemanticSegmentation
+from transformers import AutoModelForInstanceSegmentation
+# from transformers import AutoModelForSemanticSegmentation
+# 
 from datasets import load_metric
 
 import albumentations
@@ -41,6 +43,7 @@ transform = albumentations.Compose([
     albumentations.GaussNoise(p=0.2),
     albumentations.OpticalDistortion(p=0.2),
     albumentations.RandomBrightnessContrast(p=0.2),
+    albumentations.CLAHE(clip_limit=(1,4), p=1),
     ToTensorV2()
 ])
 
@@ -49,7 +52,9 @@ dataset.set_transform(transform)
 
 dataloader = DataLoader(dataset, batch_size=train_config["batch_size"], shuffle=True)
 
-model = AutoModelForSemanticSegmentation.from_pretrained(
+model = AutoModelForInstanceSegmentation.from_pretrained(
+    # model = AutoModelForSemanticSegmentation.from_pretrained(
+
     model_name,
     num_labels=len(id2label),
     id2label=id2label,
